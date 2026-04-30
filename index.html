@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custodians — AML-compliance fra ansvar til eksekvering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /*
+    ═══════════════════════════════════════════════
+    CUSTODIANS DESIGN SYSTEM
+    ───────────────────────────────────────────────
+    TYPOGRAFI
+      Display / h1 / h2  Fraunces 300–400 (optisk serif)
+      Body / UI          Inter 400/500
+
+    FARVEPALETTE (lilla tema)
+      --purple      #3D2B6E  primær / knapper / featured
+      --purple-mid  #6B4ED4  links / hover / eyebrow
+      --purple-bg   #EDEAF7  lys lilla surface
+      --bg          #F8F7FC  side-baggrund (off-white, lilla undertone)
+      --surface     #EFECF7  sektionsbaggrund (1 nuance mørkere)
+      --ink         #1A1625  tekst (næsten sort, lilla undertone)
+      --ink-light   #6B6080  sekundær tekst
+      --ink-faint   #A89EC0  label / faint text
+
+    SPACING (8px grid)
+      8 / 16 / 24 / 32 / 48 / 64 / 80 / 96px
+
+    BORDER-RADIUS
+      4px xs  |  6px sm  |  10px md  |  16px lg (cards)
+
+    KOMPONENTER
+      Border:  1px solid rgba(61,43,110,0.09)
+      Cards:   hvid bg + 1px border + 16px radius, ingen skygge
+      Knapper: 6px radius — kompakt, ikke pill
+      Ikoner:  32px container, lilla bg + border
+    ═══════════════════════════════════════════════
+    */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #F8F7FC;
+      --surface:       #EFECF7;
+      --surface-2:     #E7E2F3;
+      --white:         #FFFFFF;
+      --ink:           #1A1625;
+      --ink-mid:       #3D2B6E;
+      --ink-light:     #6B6080;
+      --ink-faint:     #A89EC0;
+      --purple:        #3D2B6E;
+      --purple-mid:    #6B4ED4;
+      --purple-bg:     #EDEAF7;
+      --purple-border: rgba(61,43,110,0.15);
+      --danger:        #7A2828;
+      --danger-bg:     #F5ECEC;
+      --danger-border: rgba(122,40,40,0.14);
+      --border:        rgba(61,43,110,0.09);
+      --border-mid:    rgba(61,43,110,0.17);
+      --serif:         'Fraunces', Georgia, serif;
+      --sans:          'Inter', system-ui, sans-serif;
+      --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem,5.5vw,3.9rem); font-weight: 300; line-height: 1.06; letter-spacing: -.02em; color: var(--ink); }
+    h2 { font-family: var(--serif); font-size: clamp(1.85rem,3.5vw,2.75rem); font-weight: 300; line-height: 1.12; letter-spacing: -.015em; color: var(--ink); }
+    h3 { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; }
+    p  { color: var(--ink-light); font-size: 14px; line-height: 1.75; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--purple-mid);
+      display: block; margin-bottom: 16px;
+    }
+    .section-header { max-width: 580px; margin-bottom: 48px; }
+    .section-header h2 { margin-bottom: 12px; }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: var(--r-sm); cursor: pointer; transition: all .15s; text-decoration: none; white-space: nowrap; border: 1px solid transparent; letter-spacing: -.01em; }
+    .btn-primary { background: var(--purple); color: #fff; border-color: var(--purple); }
+    .btn-primary:hover { background: #2D1F56; }
+    .btn-ghost { background: transparent; color: var(--ink-mid); border-color: var(--border-mid); }
+    .btn-ghost:hover { background: var(--surface); }
+    .btn-light { background: rgba(255,255,255,.11); color: rgba(255,255,255,.88); border-color: rgba(255,255,255,.18); }
+    .btn-light:hover { background: rgba(255,255,255,.2); }
+    .btn-full { width: 100%; justify-content: center; margin-top: 20px; }
+
+    /* Badges */
+    .badge { display: inline-flex; align-items: center; font-size: 10px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: var(--r-xs); border: 1px solid transparent; }
+    .badge-purple  { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
+    .badge-neutral { background: var(--surface); color: var(--ink-light); border-color: var(--border); }
+    .badge-red     { background: var(--danger-bg); color: var(--danger); border-color: var(--danger-border); }
+
+    /* ── NAV ────────────────────────────────────
+       14px vertical padding, Inter 13px links
+       Logo: Fraunces 400, 16px + lilla prik
+    ─────────────────────────────────────────── */
+    #nav { position: sticky; top: 0; z-index: 100; background: rgba(248,247,252,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 14px 0; transition: box-shadow .2s; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+    .nav-logo .dot { color: var(--purple-mid); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--ink-light); text-decoration: none; transition: color .12s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ───────────────────────────────────
+       pt 96px / pb 80px
+       Headline Fraunces 300, italic = purple-mid
+       Sub: 16px, max 540px
+       Stats: border-top, 64px margin-top, fit-content grid
+    ─────────────────────────────────────────── */
+    #hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    #hero::after { content: ''; position: absolute; top: -160px; right: -120px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(107,78,212,0.07) 0%, transparent 65%); pointer-events: none; }
+    .hero-badges { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .hero-headline { max-width: 780px; margin-bottom: 24px; }
+    .hero-headline em { font-style: italic; color: var(--purple-mid); }
+    .hero-sub { max-width: 540px; font-size: 16px; color: var(--ink-light); line-height: 1.75; margin-bottom: 40px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+    .hero-note { font-size: 12px; color: var(--ink-faint); }
+    .hero-stats { display: grid; grid-template-columns: repeat(3, auto); column-gap: 64px; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); width: fit-content; }
+    .stat-num { font-family: var(--serif); font-size: 1.75rem; font-weight: 300; color: var(--ink); display: block; line-height: 1; margin-bottom: 4px; letter-spacing: -.02em; }
+    .stat-label { font-size: 12px; color: var(--ink-faint); }
+
+    /* ── PROBLEM ────────────────────────────────
+       bg: --bg (ingen kontrast-skift)
+       Grid 2x2, gap 1px (raster-effekt), border + overflow:hidden
+       Cards: hvid bg, 28px/32px padding
+       Icon: 32px, lilla bg
+    ─────────────────────────────────────────── */
+    #problem { padding: 80px 0; }
+    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+    .pain-card { background: var(--white); padding: 28px 28px 32px; transition: background .15s; }
+    .pain-card:hover { background: var(--bg); }
+    .pain-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: var(--r-sm); background: var(--purple-bg); border: 1px solid var(--purple-border); margin-bottom: 20px; }
+    .pain-icon svg { width: 15px; height: 15px; stroke: var(--purple); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .pain-card h3 { margin-bottom: 8px; }
+    .pain-card p { font-size: 13px; line-height: 1.7; }
+    .urgency-bar { margin-top: 16px; padding: 13px 18px; background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: var(--r-sm); display: flex; align-items: center; gap: 12px; }
+    .urgency-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--danger); flex-shrink: 0; }
+    .urgency-bar p { font-size: 13px; color: var(--danger); }
+    .urgency-bar strong { font-weight: 500; }
+
+    /* ── SOLUTION ───────────────────────────────
+       bg: --surface
+       Split: 2 kolonner, 24px gap, hvide cards
+       sol-item: border-bottom, 16px top/bottom padding
+       Check: 18px cirkel, ja=lilla / nej=grå
+    ─────────────────────────────────────────── */
+    #solution { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .solution-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .sol-col { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; }
+    .sol-col-label { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .sol-item { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .sol-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .sol-check { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .sol-check.yes { background: var(--purple-bg); border: 1px solid var(--purple-border); }
+    .sol-check.no  { background: var(--surface); border: 1px solid var(--border-mid); }
+    .sol-check svg { width: 9px; height: 9px; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    .sol-check.yes svg { stroke: var(--purple); }
+    .sol-check.no  svg { stroke: var(--ink-faint); }
+    .sol-text strong { font-weight: 500; font-size: 13px; color: var(--ink); display: block; margin-bottom: 2px; }
+    .sol-text p { font-size: 13px; }
+    .sol-callout { margin-top: 20px; padding: 14px 16px; background: var(--purple-bg); border-radius: var(--r-sm); border: 1px solid var(--purple-border); }
+    .sol-callout p { font-size: 12px; color: var(--purple); line-height: 1.6; }
+    .sol-callout strong { font-weight: 500; font-size: 12px; display: block; margin-bottom: 2px; }
+
+    /* ── SERVICES ───────────────────────────────
+       bg: --bg
+       3-kolonne grid, 16px gap, hvide cards
+       Featured (02): purple bg
+       service-num: Fraunces 300, faint
+    ─────────────────────────────────────────── */
+    #services { padding: 80px 0; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; transition: border-color .15s, transform .2s; }
+    .service-card:hover { border-color: var(--border-mid); transform: translateY(-2px); }
+    .service-card.featured { background: var(--purple); border-color: var(--purple); }
+    .service-card.featured h3 { color: rgba(255,255,255,.92); }
+    .service-card.featured p  { color: rgba(255,255,255,.52); }
+    .service-card.featured .service-num { color: rgba(255,255,255,.22); }
+    .service-num { font-family: var(--serif); font-size: 11px; font-weight: 300; color: var(--ink-faint); display: block; margin-bottom: 20px; }
+    .service-card h3 { margin-bottom: 8px; }
+    .service-card p  { font-size: 13px; line-height: 1.65; }
+
+    /* ── ÅRSHJUL ────────────────────────────────
+       bg: --surface
+       4-kolonne raster (1px gap)
+       Første kolonne: --purple bg
+    ─────────────────────────────────────────── */
+    #aarshjul { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); }
+    .timeline-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
+    .timeline-col { background: var(--white); padding: 24px 20px; }
+    .timeline-col.accent { background: var(--purple); }
+    .timeline-cadence { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 12px; }
+    .timeline-col.accent .timeline-cadence { color: rgba(255,255,255,.32); }
+    .timeline-col h3 { font-size: 13px; margin-bottom: 16px; }
+    .timeline-col.accent h3 { color: rgba(255,255,255,.88); }
+    .timeline-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .timeline-items li { font-size: 12px; color: var(--ink-light); padding-left: 12px; position: relative; line-height: 1.45; }
+    .timeline-items li::before { content: ''; position: absolute; left: 0; top: 6px; width: 3px; height: 3px; border-radius: 50%; background: var(--ink-faint); }
+    .timeline-col.accent .timeline-items li { color: rgba(255,255,255,.58); }
+    .timeline-col.accent .timeline-items li::before { background: rgba(255,255,255,.28); }
+
+    /* ── PRISER ─────────────────────────────────
+       bg: --bg
+       3 cards, 16px gap
+       Highlighted: 1.5px purple border
+       Pris: Fraunces 300 2rem
+       Feature-liste: 13px, lilla check-cirkel
+    ─────────────────────────────────────────── */
+    #priser { padding: 80px 0; border-top: 1px solid var(--border); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .price-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; position: relative; }
+    .price-card.highlighted { border-color: var(--purple-mid); border-width: 1.5px; }
+    .pop-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+    .price-tier   { font-size: 12px; color: var(--ink-faint); margin-bottom: 20px; display: block; }
+    .price-amount { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; letter-spacing: -.02em; }
+    .price-period { font-size: 12px; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .price-features li { font-size: 13px; color: var(--ink-light); display: flex; gap: 8px; align-items: flex-start; line-height: 1.5; }
+    .price-features li::before { content: ''; display: inline-block; width: 14px; min-width: 14px; height: 14px; border-radius: 50%; background: var(--purple-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M3 7l3 3 5-5' stroke='%233D2B6E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain; border: 1px solid var(--purple-border); margin-top: 1px; }
+    .price-addon { padding-top: 16px; border-top: 1px solid var(--border); }
+    .price-addon-label { font-size: 11px; color: var(--ink-faint); margin-bottom: 8px; display: block; letter-spacing: .03em; }
+    .price-addon-item { font-size: 12px; color: var(--ink-light); margin-bottom: 3px; }
+    .pricing-note { font-size: 12px; color: var(--ink-faint); margin-top: 20px; }
+
+    /* ── PROCES ─────────────────────────────────
+       bg: --surface
+       4 kolonner, horisontal linje (::before)
+       Step 1: purple fyldt cirkel
+    ─────────────────────────────────────────── */
+    #proces { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); }
+    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 19px; left: 20px; right: 20px; height: 1px; background: var(--border-mid); z-index: 0; }
+    .process-step { position: relative; z-index: 1; padding-right: 24px; }
+    .step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--white); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 15px; font-weight: 300; color: var(--ink-light); margin-bottom: 20px; }
+    .process-step:first-child .step-num { background: var(--purple); color: rgba(255,255,255,.9); border-color: var(--purple); }
+    .process-step h3 { font-size: 13px; margin-bottom: 6px; }
+    .process-step p  { font-size: 12px; line-height: 1.6; }
+
+    /* ── CTA ────────────────────────────────────
+       bg: --purple
+       pt/pb: 96px
+       Alle tekster: rgba(255,255,255,x)
+       Input: transparent, hvid border
+       Knap: btn-light
+    ─────────────────────────────────────────── */
+    #cta { padding: 96px 0; background: var(--purple); }
+    #cta .eyebrow { color: rgba(255,255,255,.3); }
+    #cta h2 { color: rgba(255,255,255,.93); max-width: 560px; margin-bottom: 12px; }
+    #cta p.sub { color: rgba(255,255,255,.48); font-size: 15px; max-width: 500px; line-height: 1.75; margin-bottom: 48px; }
+    .cta-form { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .cta-input { font-family: var(--sans); font-size: 13px; padding: 10px 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-sm); color: rgba(255,255,255,.9); outline: none; min-width: 175px; transition: border-color .15s; }
+    .cta-input::placeholder { color: rgba(255,255,255,.24); }
+    .cta-input:focus { border-color: rgba(255,255,255,.32); }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,.2); }
+
+    /* ── FOOTER ── */
+    footer { background: #100C1C; border-top: 1px solid rgba(255,255,255,.05); padding: 24px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo { font-family: var(--serif); font-size: 15px; color: rgba(255,255,255,.28); letter-spacing: -.01em; }
+    .footer-note { font-size: 11px; color: rgba(255,255,255,.14); }
+
+    /* ── Animate ── */
+    .js-fade { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+    .js-fade.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .pain-grid, .solution-split, .services-grid,
+      .timeline-grid, .pricing-grid, .process-steps { grid-template-columns: 1fr; }
+      .process-steps::before { display: none; }
+      .hero-stats { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+      .nav-links { display: none; }
+      .container { padding: 0 20px; }
+      #hero { padding: 64px 0 56px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Custodians<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#problem">Problemet</a></li>
+        <li><a href="#solution">Løsningen</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#proces">Kom i gang</a></li>
+      </ul>
+      <a href="#cta" class="btn btn-primary">Book samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badges">
+      <span class="badge badge-purple">AMLR 2027-klar</span>
+      <span class="badge badge-neutral">Ekstern compliancefunktion</span>
+    </div>
+    <h1 class="hero-headline">
+      AML-compliance<br>er ikke et system.<br>
+      <em>Det er et løbende ansvar.</em>
+    </h1>
+    <p class="hero-sub">
+      Et KYC-system er ikke compliance. Det er et værktøj.
+      Custodians er funktionen, der eksekverer — med dokumentation,
+      risikovurderinger og revisionsspor der holder til tilsyn.
+    </p>
+    <div class="hero-ctas">
+      <a href="#cta" class="btn btn-primary">Book en indledende samtale →</a>
+      <a href="#services" class="btn btn-ghost">Se hvad vi dækker</a>
+    </div>
+    <p class="hero-note">Ingen forpligtelse. Vi starter med at forstå jeres setup.</p>
+    <div class="hero-stats">
+      <div>
+        <span class="stat-num">AMLR</span>
+        <span class="stat-label">2027 — ét fælles EU-regelsæt er på vej</span>
+      </div>
+      <div>
+        <span class="stat-num">§7 + §8</span>
+        <span class="stat-label">Kernadokumenter vi udarbejder og vedligeholder</span>
+      </div>
+      <div>
+        <span class="stat-num">0 kr.</span>
+        <span class="stat-label">I rekrutteringsomkostninger til intern compliance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Problemet</span>
+      <h2>Ansvaret er jeres. Kapaciteten er ikke.</h2>
+      <p>AML-compliance kan ikke outsources juridisk. Men eksekveringen kan — og det er præcis der, de fleste går galt.</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card js-fade">
+        <div class="pain-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+        <h3>Et KYC-system er ikke compliance</h3>
+        <p>Det screener og markerer. Det vurderer ikke risiko, begrunder ikke beslutninger og skaber ikke et revisionsspor.</p>
+      </div>
+      <div class="pain-card js-fade">
+        <div class="pain-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Den daglige byrde løber løbsk</h3>
+        <p>Risikovurderinger, kundeopdateringer og kontroller kræver løbende opmærksomhed — ikke en gang om året.</p>
+      </div>
+      <div class="pain-card js-fade">
+        <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Tilsyn finder ikke systemfejl — de finder huller i dokumentationen</h3>
+        <p>Manglende begrundelser, uensartede vurderinger, ufuldstændige revisionsspor. Det er observationerne.</p>
+      </div>
+      <div class="pain-card js-fade">
+        <div class="pain-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <h3>AMLR 2027 fjerner fortolkningsrummet</h3>
+        <p>Ét fælles EU-regelsæt. Fokus skifter fra politikker til operationel efterlevelse — dokumenteret og verificerbar.</p>
+      </div>
+    </div>
+    <div class="urgency-bar">
+      <div class="urgency-dot"></div>
+      <p><strong>AMLR 2027.</strong> Operationelt klar setup tager tid at bygge. Start nu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Løsningen</span>
+      <h2>Vi eksekverer. I bevarer ansvaret.</h2>
+      <p>Custodians fungerer som jeres AML-compliancefunktion. Vi håndterer den daglige drift — I forbliver ansvarlige over for myndighederne.</p>
+    </div>
+    <div class="solution-split">
+      <div class="sol-col js-fade">
+        <span class="sol-col-label">Hvad vi leverer</span>
+        <div class="sol-item">
+          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
+          <div class="sol-text"><strong>Daglig AML-eksekvering</strong><p>KYC, onboarding og risikovurderinger — udført, dokumenteret, klar.</p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
+          <div class="sol-text"><strong>Revisionsspor fra dag ét</strong><p>Alle beslutninger dokumenteres struktureret — ikke rekonstrueret bagfra.</p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
+          <div class="sol-text"><strong>§7 og §8 — opdateret og forsvaret</strong><p>Risikovurdering og politikker afspejler jeres faktiske forretning, ikke en skabelon.</p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
+          <div class="sol-text"><strong>Klar til tilsyn — altid</strong><p>Ikke kun lige inden. Tilsynsberedskab er default, ikke en indsats.</p></div>
+        </div>
+      </div>
+      <div class="sol-col js-fade">
+        <span class="sol-col-label">Hvad der ikke ændrer sig</span>
+        <div class="sol-item">
+          <div class="sol-check no"><svg viewBox="0 0 9 9"><path d="M2.5 4.5h4"/></svg></div>
+          <div class="sol-text"><strong>Juridisk ansvar forbliver hos jer</strong><p>Regulatoriske forpligtelser kan ikke outsources. Eksekveringen kan.</p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-check no"><svg viewBox="0 0 9 9"><path d="M2.5 4.5h4"/></svg></div>
+          <div class="sol-text"><strong>Ledelsen bevarer kontrollen</strong><p>Vi rapporterer til jer. I træffer de overordnede beslutninger.</p></div>
+        </div>
+        <div class="sol-item">
+          <div class="sol-check no"><svg viewBox="0 0 9 9"><path d="M2.5 4.5h4"/></svg></div>
+          <div class="sol-text"><strong>Jeres governance rører vi ikke</strong><p>Vi understøtter jeres setup — vi erstatter det ikke.</p></div>
+        </div>
+        <div class="sol-callout">
+          <p><strong>Eksekveringspartnerskab — ikke konsulentbistand.</strong> I ejer ansvaret. Vi ejer leverancen.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Services</span>
+      <h2>Alt hvad AML kræver. Intet hvad det ikke kræver.</h2>
+      <p>Fem leverancer. Ét samlet setup. Ingen løse ender.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card js-fade">
+        <span class="service-num">01</span>
+        <h3>GAP-analyse</h3>
+        <p>Vi kortlægger jeres nuværende setup mod AMLR 2027 og leverer en prioriteret handlingsplan.</p>
+      </div>
+      <div class="service-card featured js-fade">
+        <span class="service-num">02</span>
+        <h3>Daglig AML-drift</h3>
+        <p>KYC, onboarding, risikovurderinger, monitorering og dokumentation — udført dagligt, ikke ad hoc.</p>
+      </div>
+      <div class="service-card js-fade">
+        <span class="service-num">03</span>
+        <h3>§7 og §8 dokumentation</h3>
+        <p>Risikovurdering og politikker udarbejdet til inspektion — og opdateret hvert år uden påmindelse.</p>
+      </div>
+      <div class="service-card js-fade">
+        <span class="service-num">04</span>
+        <h3>AML-træning</h3>
+        <p>Scenariebaseret træning tilpasset jeres faktiske risici. Gennemførelse dokumenteret.</p>
+      </div>
+      <div class="service-card js-fade">
+        <span class="service-num">05</span>
+        <h3>Ekstern kontrol</h3>
+        <p>Uafhængig test af jeres kontroller med konkrete anbefalinger — ikke en rapport til skuffen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÅRSHJUL -->
+<section id="aarshjul">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Compliance årshjul</span>
+      <h2>Løbende drift — ikke periodiske indgreb</h2>
+      <p>Custodians er tilstede hele året. Her er hvad det konkret indebærer.</p>
+    </div>
+    <div class="timeline-grid">
+      <div class="timeline-col accent js-fade">
+        <span class="timeline-cadence">Løbende</span>
+        <h3>Daglig drift</h3>
+        <ul class="timeline-items">
+          <li>KYC og onboarding</li>
+          <li>Kunderisikovurderinger</li>
+          <li>Monitorering og alerts</li>
+          <li>Opdatering af kundedata</li>
+          <li>Dokumentation</li>
+        </ul>
+      </div>
+      <div class="timeline-col js-fade">
+        <span class="timeline-cadence">Kvartalsvist</span>
+        <h3>Review og kvalitet</h3>
+        <ul class="timeline-items">
+          <li>Review af højrisikokunder</li>
+          <li>Kvalitetssikring af vurderinger</li>
+          <li>Opfølgning på afvigelser</li>
+          <li>Statusmøde med kunden</li>
+        </ul>
+      </div>
+      <div class="timeline-col js-fade">
+        <span class="timeline-cadence">Halvårligt</span>
+        <h3>Procesgennemgang</h3>
+        <ul class="timeline-items">
+          <li>Gennemgang af risikofaktorer</li>
+          <li>Opdatering af processer</li>
+          <li>Test af interne kontroller</li>
+        </ul>
+      </div>
+      <div class="timeline-col js-fade">
+        <span class="timeline-cadence">Årligt</span>
+        <h3>Hoveddokumenter</h3>
+        <ul class="timeline-items">
+          <li>Opdatering af §7</li>
+          <li>Opdatering af §8</li>
+          <li>AML-undervisning</li>
+          <li>Ekstern kontrol</li>
+          <li>Ledelsesrapportering</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PROCES -->
+<section id="proces">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Kom i gang</span>
+      <h2>Fra samtale til eksekvering på fire trin</h2>
+      <p>Ingen lang onboarding. Vi er operative hurtigt.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step js-fade">
+        <div class="step-num">1</div>
+        <h3>Samtale</h3>
+        <p>Vi forstår jeres setup, risikoprofil og regulatoriske forpligtelser.</p>
+      </div>
+      <div class="process-step js-fade">
+        <div class="step-num">2</div>
+        <h3>GAP-vurdering</h3>
+        <p>Vi identificerer hullerne og prioriterer dem efter risikoniveau.</p>
+      </div>
+      <div class="process-step js-fade">
+        <div class="step-num">3</div>
+        <h3>Aftale</h3>
+        <p>Vi definerer scope, leverancer og rollefordeling.</p>
+      </div>
+      <div class="process-step js-fade">
+        <div class="step-num">4</div>
+        <h3>Vi overtager driften</h3>
+        <p>Custodians er jeres AML-funktion fra dag ét.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container">
+    <span class="eyebrow">Kom i gang</span>
+    <h2>Book en samtale. Ingen forpligtelse.</h2>
+    <p class="sub">Vi bruger 30 minutter på at forstå, hvor I står. Derefter ved vi begge, om det giver mening.</p>
+    <div class="cta-form">
+      <input class="cta-input" type="text"  placeholder="Jeres virksomhed" />
+      <input class="cta-input" type="email" placeholder="Email" />
+      <input class="cta-input" type="text"  placeholder="Antal klienter (ca.)" style="max-width:170px" />
+      <button class="btn btn-light">Send forespørgsel →</button>
+    </div>
+    <p class="cta-note">Vi svarer inden for én hverdag. Ingen binding.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-logo">Custodians.</span>
+      <p class="footer-note">© 2025 · Betroet AML-rådgivning · AMLR 2027-klar</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').style.boxShadow =
+      window.scrollY > 8 ? '0 1px 24px rgba(61,43,110,0.08)' : 'none';
+  }, { passive: true });
+
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.js-fade').forEach(el => io.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
