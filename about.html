@@ -1,74 +1,53 @@
 <!DOCTYPE html>
+
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Custodians — Om os</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Om os — Custodians</title>
+
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
   <style>
-    /*
-    ═══════════════════════════════════════════════
-    CUSTODIANS DESIGN SYSTEM
-    ───────────────────────────────────────────────
-    TYPOGRAFI
-      Display / h1 / h2  Fraunces 300–400 (optisk serif)
-      Body / UI          Inter 400/500
-
-    FARVEPALETTE (lilla tema)
-      --purple      #3D2B6E  primær / knapper / featured
-      --purple-mid  #6B4ED4  links / hover / eyebrow
-      --purple-bg   #EDEAF7  lys lilla surface
-      --bg          #F8F7FC  side-baggrund (off-white, lilla undertone)
-      --surface     #EFECF7  sektionsbaggrund (1 nuance mørkere)
-      --ink         #1A1625  tekst (næsten sort, lilla undertone)
-      --ink-light   #6B6080  sekundær tekst
-      --ink-faint   #A89EC0  label / faint text
-
-    SPACING (8px grid)
-      8 / 16 / 24 / 32 / 48 / 64 / 80 / 96px
-
-    BORDER-RADIUS
-      4px xs  |  6px sm  |  10px md  |  16px lg (cards)
-
-    KOMPONENTER
-      Border:  1px solid rgba(61,43,110,0.09)
-      Cards:   hvid bg + 1px border + 16px radius, ingen skygge
-      Knapper: 6px radius — kompakt, ikke pill
-      Ikoner:  32px container, lilla bg + border
-    ═══════════════════════════════════════════════
-    */
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:            #F8F7FC;
-      --surface:       #EFECF7;
-      --surface-2:     #E7E2F3;
-      --white:         #FFFFFF;
-      --ink:           #1A1625;
-      --ink-mid:       #3D2B6E;
-      --ink-light:     #6B6080;
-      --ink-faint:     #A89EC0;
-      --purple:        #3D2B6E;
-      --purple-mid:    #6B4ED4;
-      --purple-bg:     #EDEAF7;
-      --purple-border: rgba(61,43,110,0.15);
-      --danger:        #7A2828;
-      --danger-bg:     #F5ECEC;
-      --danger-border: rgba(122,40,40,0.14);
-      --border:        rgba(61,43,110,0.09);
-      --border-mid:    rgba(61,43,110,0.17);
-      --serif:         'Fraunces', Georgia, serif;
-      --sans:          'Inter', system-ui, sans-serif;
-      --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --bg: #F8F7FC;
+      --surface: #EFECF7;
+      --white: #FFFFFF;
+
+      --ink: #1A1625;
+      --ink-light: #6B6080;
+      --ink-faint: #A89EC0;
+
+      --purple: #3D2B6E;
+      --purple-mid: #6B4ED4;
+
+      --border: rgba(61,43,110,0.09);
+
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+
+      --r-sm: 6px;
+      --r-lg: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--sans);
       background: var(--bg);
@@ -77,357 +56,398 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
 
-    h1 { font-family: var(--serif); font-size: clamp(2.5rem,5.5vw,3.9rem); font-weight: 300; line-height: 1.06; letter-spacing: -.02em; color: var(--ink); }
-    h2 { font-family: var(--serif); font-size: clamp(1.85rem,3.5vw,2.75rem); font-weight: 300; line-height: 1.12; letter-spacing: -.015em; color: var(--ink); }
-    h3 { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; }
-    p  { color: var(--ink-light); font-size: 14px; line-height: 1.75; }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: var(--ink-light);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,247,252,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo .dot {
+      color: var(--purple-mid);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--ink-light);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    /* HERO */
+
+    #hero {
+      padding: 120px 0 100px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(
+        ellipse,
+        rgba(107,78,212,0.07) 0%,
+        transparent 65%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content p {
+      max-width: 560px;
+    }
+
+    /* CONTENT */
+
+    section.content-section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
 
     .eyebrow {
-      font-size: 11px; font-weight: 500; letter-spacing: .1em;
-      text-transform: uppercase; color: var(--purple-mid);
-      display: block; margin-bottom: 16px;
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 16px;
     }
-    .section-header { max-width: 580px; margin-bottom: 48px; }
-    .section-header h2 { margin-bottom: 12px; }
 
-    /* Buttons */
-    .btn { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sans); font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: var(--r-sm); cursor: pointer; transition: all .15s; text-decoration: none; white-space: nowrap; border: 1px solid transparent; letter-spacing: -.01em; }
-    .btn-primary { background: var(--purple); color: #fff; border-color: var(--purple); }
-    .btn-primary:hover { background: #2D1F56; }
-    .btn-ghost { background: transparent; color: var(--ink-mid); border-color: var(--border-mid); }
-    .btn-ghost:hover { background: var(--surface); }
-    .btn-light { background: rgba(255,255,255,.11); color: rgba(255,255,255,.88); border-color: rgba(255,255,255,.18); }
-    .btn-light:hover { background: rgba(255,255,255,.2); }
-    .btn-full { width: 100%; justify-content: center; margin-top: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+    }
 
-    /* Badges */
-    .badge { display: inline-flex; align-items: center; font-size: 10px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: var(--r-xs); border: 1px solid transparent; }
-    .badge-purple  { background: var(--purple-bg); color: var(--purple); border-color: var(--purple-border); }
-    .badge-neutral { background: var(--surface); color: var(--ink-light); border-color: var(--border); }
-    .badge-red     { background: var(--danger-bg); color: var(--danger); border-color: var(--danger-border); }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+    }
 
-    /* ── NAV ────────────────────────────────────
-       14px vertical padding, Inter 13px links
-       Logo: Fraunces 400, 16px + lilla prik
-    ─────────────────────────────────────────── */
-    #nav { position: sticky; top: 0; z-index: 100; background: rgba(248,247,252,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 14px 0; transition: box-shadow .2s; }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: var(--serif); font-size: 16px; font-weight: 400; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
-    .nav-logo .dot { color: var(--purple-mid); }
-    .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--ink-light); text-decoration: none; transition: color .12s; }
-    .nav-links a:hover { color: var(--ink); }
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
 
-    /* ── HERO ───────────────────────────────────
-       pt 96px / pb 80px
-       Headline Fraunces 300, italic = purple-mid
-       Sub: 16px, max 540px
-       Stats: border-top, 64px margin-top, fit-content grid
-    ─────────────────────────────────────────── */
-    #hero { padding: 96px 0 80px; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
-    #hero::after { content: ''; position: absolute; top: -160px; right: -120px; width: 600px; height: 600px; background: radial-gradient(ellipse, rgba(107,78,212,0.07) 0%, transparent 65%); pointer-events: none; }
-    .hero-badges { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
-    .hero-headline { max-width: 780px; margin-bottom: 24px; }
-    .hero-headline em { font-style: italic; color: var(--purple-mid); }
-    .hero-sub { max-width: 540px; font-size: 16px; color: var(--ink-light); line-height: 1.75; margin-bottom: 40px; }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
-    .hero-note { font-size: 12px; color: var(--ink-faint); }
-    .hero-stats { display: grid; grid-template-columns: repeat(3, auto); column-gap: 64px; margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); width: fit-content; }
-    .stat-num { font-family: var(--serif); font-size: 1.75rem; font-weight: 300; color: var(--ink); display: block; line-height: 1; margin-bottom: 4px; letter-spacing: -.02em; }
-    .stat-label { font-size: 12px; color: var(--ink-faint); }
+    .card p {
+      font-size: 14px;
+    }
 
-    /* ── PROBLEM ────────────────────────────────
-       bg: --bg (ingen kontrast-skift)
-       Grid 2x2, gap 1px (raster-effekt), border + overflow:hidden
-       Cards: hvid bg, 28px/32px padding
-       Icon: 32px, lilla bg
-    ─────────────────────────────────────────── */
-    #problem { padding: 80px 0; }
-    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
-    .pain-card { background: var(--white); padding: 28px 28px 32px; transition: background .15s; }
-    .pain-card:hover { background: var(--bg); }
-    .pain-icon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: var(--r-sm); background: var(--purple-bg); border: 1px solid var(--purple-border); margin-bottom: 20px; }
-    .pain-icon svg { width: 15px; height: 15px; stroke: var(--purple); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .pain-card h3 { margin-bottom: 8px; }
-    .pain-card p { font-size: 13px; line-height: 1.7; }
-    .urgency-bar { margin-top: 16px; padding: 13px 18px; background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: var(--r-sm); display: flex; align-items: center; gap: 12px; }
-    .urgency-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--danger); flex-shrink: 0; }
-    .urgency-bar p { font-size: 13px; color: var(--danger); }
-    .urgency-bar strong { font-weight: 500; }
+    /* CTA */
 
-    /* ── SOLUTION ───────────────────────────────
-       bg: --surface
-       Split: 2 kolonner, 24px gap, hvide cards
-       sol-item: border-bottom, 16px top/bottom padding
-       Check: 18px cirkel, ja=lilla / nej=grå
-    ─────────────────────────────────────────── */
-    #solution { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .solution-split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .sol-col { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; }
-    .sol-col-label { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
-    .sol-item { display: flex; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-    .sol-item:last-of-type { border-bottom: none; padding-bottom: 0; }
-    .sol-check { width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .sol-check.yes { background: var(--purple-bg); border: 1px solid var(--purple-border); }
-    .sol-check.no  { background: var(--surface); border: 1px solid var(--border-mid); }
-    .sol-check svg { width: 9px; height: 9px; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
-    .sol-check.yes svg { stroke: var(--purple); }
-    .sol-check.no  svg { stroke: var(--ink-faint); }
-    .sol-text strong { font-weight: 500; font-size: 13px; color: var(--ink); display: block; margin-bottom: 2px; }
-    .sol-text p { font-size: 13px; }
-    .sol-callout { margin-top: 20px; padding: 14px 16px; background: var(--purple-bg); border-radius: var(--r-sm); border: 1px solid var(--purple-border); }
-    .sol-callout p { font-size: 12px; color: var(--purple); line-height: 1.6; }
-    .sol-callout strong { font-weight: 500; font-size: 12px; display: block; margin-bottom: 2px; }
+    #cta {
+      padding: 120px 0;
+      background: var(--purple);
+    }
 
-    /* ── SERVICES ───────────────────────────────
-       bg: --bg
-       3-kolonne grid, 16px gap, hvide cards
-       Featured (02): purple bg
-       service-num: Fraunces 300, faint
-    ─────────────────────────────────────────── */
-    #services { padding: 80px 0; }
-    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .service-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; transition: border-color .15s, transform .2s; }
-    .service-card:hover { border-color: var(--border-mid); transform: translateY(-2px); }
-    .service-card.featured { background: var(--purple); border-color: var(--purple); }
-    .service-card.featured h3 { color: rgba(255,255,255,.92); }
-    .service-card.featured p  { color: rgba(255,255,255,.52); }
-    .service-card.featured .service-num { color: rgba(255,255,255,.22); }
-    .service-num { font-family: var(--serif); font-size: 11px; font-weight: 300; color: var(--ink-faint); display: block; margin-bottom: 20px; }
-    .service-card h3 { margin-bottom: 8px; }
-    .service-card p  { font-size: 13px; line-height: 1.65; }
+    #cta h2 {
+      color: rgba(255,255,255,.95);
+      max-width: 620px;
+    }
 
-    /* ── ÅRSHJUL ────────────────────────────────
-       bg: --surface
-       4-kolonne raster (1px gap)
-       Første kolonne: --purple bg
-    ─────────────────────────────────────────── */
-    #aarshjul { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); }
-    .timeline-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
-    .timeline-col { background: var(--white); padding: 24px 20px; }
-    .timeline-col.accent { background: var(--purple); }
-    .timeline-cadence { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 12px; }
-    .timeline-col.accent .timeline-cadence { color: rgba(255,255,255,.32); }
-    .timeline-col h3 { font-size: 13px; margin-bottom: 16px; }
-    .timeline-col.accent h3 { color: rgba(255,255,255,.88); }
-    .timeline-items { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-    .timeline-items li { font-size: 12px; color: var(--ink-light); padding-left: 12px; position: relative; line-height: 1.45; }
-    .timeline-items li::before { content: ''; position: absolute; left: 0; top: 6px; width: 3px; height: 3px; border-radius: 50%; background: var(--ink-faint); }
-    .timeline-col.accent .timeline-items li { color: rgba(255,255,255,.58); }
-    .timeline-col.accent .timeline-items li::before { background: rgba(255,255,255,.28); }
+    #cta p {
+      color: rgba(255,255,255,.58);
+      max-width: 520px;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
 
-    /* ── PRISER ─────────────────────────────────
-       bg: --bg
-       3 cards, 16px gap
-       Highlighted: 1.5px purple border
-       Pris: Fraunces 300 2rem
-       Feature-liste: 13px, lilla check-cirkel
-    ─────────────────────────────────────────── */
-    #priser { padding: 80px 0; border-top: 1px solid var(--border); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .price-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; position: relative; }
-    .price-card.highlighted { border-color: var(--purple-mid); border-width: 1.5px; }
-    .pop-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
-    .price-tier   { font-size: 12px; color: var(--ink-faint); margin-bottom: 20px; display: block; }
-    .price-amount { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 4px; letter-spacing: -.02em; }
-    .price-period { font-size: 12px; color: var(--ink-faint); margin-bottom: 24px; display: block; }
-    .price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-    .price-features li { font-size: 13px; color: var(--ink-light); display: flex; gap: 8px; align-items: flex-start; line-height: 1.5; }
-    .price-features li::before { content: ''; display: inline-block; width: 14px; min-width: 14px; height: 14px; border-radius: 50%; background: var(--purple-bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M3 7l3 3 5-5' stroke='%233D2B6E' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain; border: 1px solid var(--purple-border); margin-top: 1px; }
-    .price-addon { padding-top: 16px; border-top: 1px solid var(--border); }
-    .price-addon-label { font-size: 11px; color: var(--ink-faint); margin-bottom: 8px; display: block; letter-spacing: .03em; }
-    .price-addon-item { font-size: 12px; color: var(--ink-light); margin-bottom: 3px; }
-    .pricing-note { font-size: 12px; color: var(--ink-faint); margin-top: 20px; }
+    .mail-link {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: white;
+      text-decoration: none;
+    }
 
-    /* ── PROCES ─────────────────────────────────
-       bg: --surface
-       4 kolonner, horisontal linje (::before)
-       Step 1: purple fyldt cirkel
-    ─────────────────────────────────────────── */
-    #proces { padding: 80px 0; background: var(--surface); border-top: 1px solid var(--border); }
-    .process-steps { display: grid; grid-template-columns: repeat(4,1fr); position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 19px; left: 20px; right: 20px; height: 1px; background: var(--border-mid); z-index: 0; }
-    .process-step { position: relative; z-index: 1; padding-right: 24px; }
-    .step-num { width: 40px; height: 40px; border-radius: 50%; background: var(--white); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 15px; font-weight: 300; color: var(--ink-light); margin-bottom: 20px; }
-    .process-step:first-child .step-num { background: var(--purple); color: rgba(255,255,255,.9); border-color: var(--purple); }
-    .process-step h3 { font-size: 13px; margin-bottom: 6px; }
-    .process-step p  { font-size: 12px; line-height: 1.6; }
+    .mail-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
 
-    /* ── CTA ────────────────────────────────────
-       bg: --purple
-       pt/pb: 96px
-       Alle tekster: rgba(255,255,255,x)
-       Input: transparent, hvid border
-       Knap: btn-light
-    ─────────────────────────────────────────── */
-    #cta { padding: 96px 0; background: var(--purple); }
-    #cta .eyebrow { color: rgba(255,255,255,.3); }
-    #cta h2 { color: rgba(255,255,255,.93); max-width: 560px; margin-bottom: 12px; }
-    #cta p.sub { color: rgba(255,255,255,.48); font-size: 15px; max-width: 500px; line-height: 1.75; margin-bottom: 48px; }
-    .cta-form { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
-    .cta-input { font-family: var(--sans); font-size: 13px; padding: 10px 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: var(--r-sm); color: rgba(255,255,255,.9); outline: none; min-width: 175px; transition: border-color .15s; }
-    .cta-input::placeholder { color: rgba(255,255,255,.24); }
-    .cta-input:focus { border-color: rgba(255,255,255,.32); }
-    .cta-note { font-size: 12px; color: rgba(255,255,255,.2); }
+    /* FOOTER */
 
-    /* ── FOOTER ── */
-    footer { background: #100C1C; border-top: 1px solid rgba(255,255,255,.05); padding: 24px 0; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-    .footer-logo { font-family: var(--serif); font-size: 15px; color: rgba(255,255,255,.28); letter-spacing: -.01em; }
-    .footer-note { font-size: 11px; color: rgba(255,255,255,.14); }
+    footer {
+      background: #100C1C;
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 24px 0;
+    }
 
-    /* ── Animate ── */
-    .js-fade { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-    .js-fade.visible { opacity: 1; transform: translateY(0); }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: rgba(255,255,255,.28);
+    }
 
-    /* ── Hvorfor os ── */
-    #hvorfor { padding: 80px 0; border-top: 1px solid var(--border); }
-    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
-    .why-card { background: var(--white); padding: 28px 28px 32px; transition: background .15s; }
-    .why-card:hover { background: var(--bg); }
-    .why-num { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--purple-bg); line-height: 1; margin-bottom: 16px; display: block; letter-spacing: -.02em; }
-    .why-card h3 { margin-bottom: 8px; }
-    .why-card p { font-size: 13px; line-height: 1.7; }
-    /* ── Responsive ── */
+    .footer-note {
+      font-size: 11px;
+      color: rgba(255,255,255,.14);
+    }
+
+    /* MOBILE */
+
     @media (max-width: 860px) {
-      .pain-grid, .solution-split, .services-grid,
-      .timeline-grid, .pricing-grid, .process-steps { grid-template-columns: 1fr; }
-      .process-steps::before { display: none; }
-      .hero-stats { grid-template-columns: 1fr 1fr; row-gap: 32px; }
-      .nav-links { display: none; }
-      .container { padding: 0 20px; }
-      #hero { padding: 64px 0 56px; }
-    }
-  
 
-    /* ── Simple site additions ── */
-    .simple-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-    .value-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; }
-    .simple-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; }
-    .value-card { background: var(--white); padding: 28px 24px 32px; }
-    .simple-card h3, .value-card h3 { margin-bottom: 8px; }
-    .simple-card p, .value-card p { font-size: 13px; line-height: 1.7; }
-    .page-section { padding: 80px 0; border-top: 1px solid var(--border); }
-    .page-section.surface { background: var(--surface); }
-    .compact-copy { max-width: 620px; }
-    .compact-copy p + p { margin-top: 14px; }
-    .contact-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
-    .contact-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 28px; }
-    .contact-form { display: flex; flex-direction: column; gap: 12px; }
-    .contact-input, .contact-textarea { font-family: var(--sans); font-size: 13px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border-mid); border-radius: var(--r-sm); color: var(--ink); outline: none; transition: border-color .15s; }
-    .contact-textarea { min-height: 120px; resize: vertical; }
-    .contact-input:focus, .contact-textarea:focus { border-color: var(--purple-mid); }
-    .mail-link { color: var(--purple); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
-    .cta-contact { display: flex; flex-direction: column; gap: 8px; }
-    .cta-direct { font-size: 16px; color: rgba(255,255,255,.85); line-height: 1.7; }
-    .cta-direct a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
-    .nav-links a.active { color: var(--ink); }
-    @media (max-width: 860px) {
-      .simple-grid, .value-grid, .contact-panel { grid-template-columns: 1fr; }
+      .container {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
+        padding: 80px 0 72px;
+      }
+
+      section.content-section {
+        padding: 72px 0;
+      }
+
+      #cta {
+        padding: 80px 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
     }
-</style>
+  </style>
+
 </head>
+
 <body>
-<!-- NAV -->
+
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Custodians<span class="dot">.</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="">Forside</a></li>
-        <li><a href="about.html" class="active">Om os</a></li>
-        <li><a href="contact.html" class="">Kontakt</a></li>
-      </ul>
-      <a href="contact.html" class="btn btn-primary">Kontakt os</a>
-    </div>
+
+```
+  <a href="index.html" class="nav-logo">
+    Custodians<span class="dot">.</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html">Forside</a></li>
+    <li><a href="about.html">Om os</a></li>
+    <li><a href="contact.html">Kontakt</a></li>
+  </ul>
+
+</div>
+```
+
   </div>
 </nav>
 
 <section id="hero">
   <div class="container">
-    <div class="hero-badges">
-      <span class="badge badge-purple">Om Custodians</span>
-      <span class="badge badge-neutral">Praktisk AML-compliance</span>
-    </div>
-    <h1 class="hero-headline">
-      Vi hjælper virksomheder med<br>
-      <em>AML-compliance i praksis.</em>
-    </h1>
-    <p class="hero-sub">
-      Custodians er skabt for virksomheder, der har brug for ro, struktur og kompetent hjælp til AML — uden at gøre compliance mere kompliceret end nødvendigt.
-    </p>
+
+```
+<div class="hero-content">
+
+  <h1>
+    AML-compliance i praksis.
+  </h1>
+
+  <p>
+    Custodians hjælper regulerede virksomheder med den løbende AML-drift,
+    dokumentation og opfølgning — så compliance bliver håndterbart i hverdagen.
+  </p>
+
+</div>
+```
+
   </div>
 </section>
 
-<section class="page-section">
+<section class="content-section">
   <div class="container">
-    <div class="section-header">
-      <span class="eyebrow">Hvem vi er</span>
-      <h2>En praktisk compliancepartner.</h2>
-      <p>Vi arbejder tæt på den daglige drift og hjælper med at omsætte krav til konkrete handlinger, dokumentation og overblik.</p>
-    </div>
-    <div class="solution-split">
-      <div class="sol-col js-fade">
-        <span class="sol-col-label">Vores tilgang</span>
-        <div class="sol-item">
-          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
-          <div class="sol-text"><strong>Enkelt</strong><p>Vi gør det tydeligt, hvad der skal gøres — og hvad der ikke behøver fylde.</p></div>
-        </div>
-        <div class="sol-item">
-          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
-          <div class="sol-text"><strong>Praktisk</strong><p>Vi fokuserer på det arbejde, der faktisk skal udføres i hverdagen.</p></div>
-        </div>
-        <div class="sol-item">
-          <div class="sol-check yes"><svg viewBox="0 0 9 9"><path d="M1.5 4.5l2.5 2.5 3.5-4"/></svg></div>
-          <div class="sol-text"><strong>Tæt på forretningen</strong><p>AML skal passe til jeres kunder, processer og risici — ikke omvendt.</p></div>
-        </div>
-      </div>
-      <div class="sol-col js-fade">
-        <span class="sol-col-label">Hvorfor Custodians findes</span>
-        <div class="compact-copy">
-          <p>Mange virksomheder ved godt, at AML er vigtigt. Udfordringen er at finde tid, struktur og kompetencer til at håndtere det løbende.</p>
-          <p>Custodians hjælper med at lukke hullet mellem krav og hverdag. Ikke med mere kompleksitet — men med praktisk hjælp, klar dokumentation og bedre overblik.</p>
-        </div>
-      </div>
-    </div>
+
+```
+<div class="section-header">
+  <span class="eyebrow">Hvem vi er</span>
+
+  <h2>
+    Vi bygger compliance der fungerer i praksis.
+  </h2>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Praktisk tilgang</h3>
+    <p>
+      Vi fokuserer på løsninger der fungerer i den daglige drift — ikke bare på papir.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Tæt på forretningen</h3>
+    <p>
+      Compliance skal understøtte virksomheden, ikke blokere den.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Løbende samarbejde</h3>
+    <p>
+      AML-compliance er ikke en engangsøvelse. Vi arbejder løbende med kunderne.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Klar dokumentation</h3>
+    <p>
+      Vi hjælper virksomheder med at skabe overblik og dokumentation der holder.
+    </p>
+  </div>
+
+</div>
+```
+
   </div>
 </section>
 
 <section id="cta">
   <div class="container">
-    <span class="eyebrow">Næste skridt</span>
-    <h2>Vil I høre mere om, hvordan vi arbejder?</h2>
-    <p class="sub">Kontakt os for en kort og uforpligtende dialog.</p>
-    <div class="cta-contact">
-      <p class="cta-direct">Skriv til <a href="mailto:info@custodians.dk">info@custodians.dk</a></p>
-    </div>
+
+```
+<h2>
+  Har I brug for hjælp med AML-compliance?
+</h2>
+
+<p>
+  Skriv til os og få et hurtigt overblik over jeres AML-setup.
+</p>
+
+<a class="mail-link" href="mailto:info@custodians.dk">
+  info@custodians.dk
+</a>
+```
+
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="container">
-    <div class="footer-inner">
-      <span class="footer-logo">Custodians.</span>
-      <p class="footer-note">© 2026 · AML-compliance i praksis</p>
-    </div>
+
+```
+<div class="footer-inner">
+
+  <span class="footer-logo">
+    Custodians.
+  </span>
+
+  <p class="footer-note">
+    © 2025 · AML-compliance i praksis
+  </p>
+
+</div>
+```
+
   </div>
 </footer>
 
-<script>
-  window.addEventListener('scroll', () => {
-    document.getElementById('nav').style.boxShadow =
-      window.scrollY > 8 ? '0 1px 24px rgba(61,43,110,0.08)' : 'none';
-  }, { passive: true });
-
-  const io = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.1 }
-  );
-  document.querySelectorAll('.js-fade').forEach(el => io.observe(el));
-</script>
 </body>
 </html>
