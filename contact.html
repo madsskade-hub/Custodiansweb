@@ -13,6 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -74,6 +75,8 @@
       line-height: 1.75;
     }
 
+    /* NAV */
+
     #nav {
       position: sticky;
       top: 0;
@@ -120,6 +123,8 @@
       color: var(--ink);
     }
 
+    /* CONTACT */
+
     #contact {
       min-height: calc(100vh - 140px);
       padding: 120px 0 96px;
@@ -135,7 +140,11 @@
       right: -120px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(ellipse, rgba(107,78,212,0.07) 0%, transparent 65%);
+      background: radial-gradient(
+        ellipse,
+        rgba(107,78,212,0.07) 0%,
+        transparent 65%
+      );
       pointer-events: none;
     }
 
@@ -149,7 +158,7 @@
       margin-bottom: 24px;
     }
 
-    .contact-content .lead {
+    .lead {
       max-width: 520px;
       margin-bottom: 40px;
     }
@@ -176,6 +185,8 @@
       color: var(--ink-faint);
     }
 
+    /* FOOTER */
+
     footer {
       background: #100C1C;
       border-top: 1px solid rgba(255,255,255,.05);
@@ -200,13 +211,21 @@
       color: rgba(255,255,255,.14);
     }
 
+    /* MOBILE */
+
     @media (max-width: 860px) {
+
       .container {
         padding: 0 20px;
       }
 
       .nav-links {
-        display: none;
+        display: flex;
+        gap: 18px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
       }
 
       #contact {
@@ -227,20 +246,26 @@
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Custodians<span class="dot">.</span></a>
+
+      <a href="index.html" class="nav-logo">
+        Custodians<span class="dot">.</span>
+      </a>
 
       <ul class="nav-links">
         <li><a href="index.html">Forside</a></li>
         <li><a href="about.html">Om os</a></li>
         <li><a href="contact.html">Kontakt</a></li>
       </ul>
+
     </div>
   </div>
 </nav>
 
 <section id="contact">
   <div class="container">
+
     <div class="contact-content">
+
       <h1>Kontakt os</h1>
 
       <p class="lead">
@@ -248,21 +273,34 @@
         er I velkomne til at skrive direkte til os.
       </p>
 
-      <a class="mail-link" href="mailto:info@custodians.dk">info@custodians.dk</a>
+      <a class="mail-link" href="mailto:info@custodians.dk">
+        info@custodians.dk
+      </a>
 
       <p class="note">
         Vi svarer inden for én hverdag.
       </p>
+
     </div>
+
   </div>
 </section>
 
 <footer>
   <div class="container">
+
     <div class="footer-inner">
-      <span class="footer-logo">Custodians.</span>
-      <p class="footer-note">© 2025 · AML-compliance i praksis</p>
+
+      <span class="footer-logo">
+        Custodians.
+      </span>
+
+      <p class="footer-note">
+        © 2025 · AML-compliance i praksis
+      </p>
+
     </div>
+
   </div>
 </footer>
 
