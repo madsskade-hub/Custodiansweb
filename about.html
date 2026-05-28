@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Kontakt — Custodians</title>
+  <title>Om os — Custodians</title>
 
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -38,6 +39,9 @@
 
       --serif: 'Fraunces', Georgia, serif;
       --sans: 'Inter', system-ui, sans-serif;
+
+      --r-sm: 6px;
+      --r-lg: 16px;
     }
 
     html {
@@ -61,17 +65,28 @@
 
     h1 {
       font-family: var(--serif);
-      font-size: clamp(2.5rem, 5.5vw, 3.9rem);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
       font-weight: 300;
-      line-height: 1.06;
-      letter-spacing: -0.02em;
+      line-height: 1.04;
+      letter-spacing: -.03em;
       color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
     }
 
     p {
       color: var(--ink-light);
       font-size: 15px;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     /* NAV */
@@ -98,7 +113,6 @@
       font-weight: 400;
       color: var(--ink);
       text-decoration: none;
-      letter-spacing: -0.01em;
     }
 
     .nav-logo .dot {
@@ -115,24 +129,22 @@
       font-size: 13px;
       color: var(--ink-light);
       text-decoration: none;
-      transition: color 0.12s;
     }
 
     .nav-links a:hover {
       color: var(--ink);
     }
 
-    /* CONTACT */
+    /* HERO */
 
-    #contact {
-      min-height: calc(100vh - 140px);
-      padding: 120px 0 96px;
+    #hero {
+      padding: 120px 0 100px;
       border-bottom: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
 
-    #contact::after {
+    #hero::after {
       content: '';
       position: absolute;
       top: -160px;
@@ -147,18 +159,77 @@
       pointer-events: none;
     }
 
-    .contact-content {
-      max-width: 620px;
+    .hero-content {
+      max-width: 760px;
       position: relative;
       z-index: 1;
     }
 
-    .contact-content h1 {
-      margin-bottom: 24px;
+    .hero-content p {
+      max-width: 560px;
     }
 
-    .lead {
+    /* CONTENT */
+
+    section.content-section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      max-width: 560px;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    #cta {
+      padding: 120px 0;
+      background: var(--purple);
+    }
+
+    #cta h2 {
+      color: rgba(255,255,255,.95);
+      max-width: 620px;
+    }
+
+    #cta p {
+      color: rgba(255,255,255,.58);
       max-width: 520px;
+      margin-top: 16px;
       margin-bottom: 40px;
     }
 
@@ -168,20 +239,14 @@
       font-size: clamp(1.8rem, 4vw, 3rem);
       font-weight: 300;
       line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--purple);
+      letter-spacing: -.02em;
+      color: white;
       text-decoration: none;
-      margin-bottom: 16px;
     }
 
     .mail-link:hover {
       text-decoration: underline;
       text-underline-offset: 6px;
-    }
-
-    .note {
-      font-size: 13px;
-      color: var(--ink-faint);
     }
 
     /* FOOTER */
@@ -194,15 +259,14 @@
 
     .footer-inner {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .footer-logo {
       font-family: var(--serif);
       font-size: 15px;
       color: rgba(255,255,255,.28);
-      letter-spacing: -0.01em;
     }
 
     .footer-note {
@@ -227,17 +291,30 @@
         font-size: 12px;
       }
 
-      #contact {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
         padding: 80px 0 72px;
       }
 
+      section.content-section {
+        padding: 72px 0;
+      }
+
+      #cta {
+        padding: 80px 0;
+      }
+
       .footer-inner {
-        gap: 12px;
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
       }
     }
   </style>
+
 </head>
 
 <body>
@@ -246,42 +323,108 @@
   <div class="container">
     <div class="nav-inner">
 
-      <a href="index.html" class="nav-logo">
-        Custodians<span class="dot">.</span>
-      </a>
+```
+  <a href="index.html" class="nav-logo">
+    Custodians<span class="dot">.</span>
+  </a>
 
-    <ul class="nav-links">
-  <li><a href="/">Forside</a></li>
-  <li><a href="/about">Om os</a></li>
-  <li><a href="/contact">Kontakt</a></li>
-</ul>
-      </ul>
+  <ul class="nav-links">
+    <li><a href="index.html">Forside</a></li>
+    <li><a href="about.html">Om os</a></li>
+    <li><a href="contact.html">Kontakt</a></li>
+  </ul>
 
-    </div>
+</div>
+```
+
   </div>
 </nav>
 
-<section id="contact">
+<section id="hero">
   <div class="container">
 
-    <div class="contact-content">
+```
+<div class="hero-content">
 
-      <h1>Kontakt os</h1>
+  <h1>
+    AML-compliance i praksis.
+  </h1>
 
-      <p class="lead">
-        Hvis I vil høre mere om, hvordan Custodians hjælper med AML-compliance i praksis,
-        er I velkomne til at skrive direkte til os.
-      </p>
+  <p>
+    Custodians hjælper regulerede virksomheder med den løbende AML-drift,
+    dokumentation og opfølgning — så compliance bliver håndterbart i hverdagen.
+  </p>
 
-      <a class="mail-link" href="mailto:info@custodians.dk">
-        info@custodians.dk
-      </a>
+</div>
+```
 
-      <p class="note">
-        Vi svarer inden for én hverdag.
-      </p>
+  </div>
+</section>
 
-    </div>
+<section class="content-section">
+  <div class="container">
+
+```
+<div class="section-header">
+  <span class="eyebrow">Hvem vi er</span>
+
+  <h2>
+    Vi bygger compliance der fungerer i praksis.
+  </h2>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <h3>Praktisk tilgang</h3>
+    <p>
+      Vi fokuserer på løsninger der fungerer i den daglige drift — ikke bare på papir.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Tæt på forretningen</h3>
+    <p>
+      Compliance skal understøtte virksomheden, ikke blokere den.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Løbende samarbejde</h3>
+    <p>
+      AML-compliance er ikke en engangsøvelse. Vi arbejder løbende med kunderne.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Klar dokumentation</h3>
+    <p>
+      Vi hjælper virksomheder med at skabe overblik og dokumentation der holder.
+    </p>
+  </div>
+
+</div>
+```
+
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+
+```
+<h2>
+  Har I brug for hjælp med AML-compliance?
+</h2>
+
+<p>
+  Skriv til os og få et hurtigt overblik over jeres AML-setup.
+</p>
+
+<a class="mail-link" href="mailto:info@custodians.dk">
+  info@custodians.dk
+</a>
+```
 
   </div>
 </section>
@@ -289,21 +432,22 @@
 <footer>
   <div class="container">
 
-    <div class="footer-inner">
+```
+<div class="footer-inner">
 
-      <span class="footer-logo">
-        Custodians.
-      </span>
+  <span class="footer-logo">
+    Custodians.
+  </span>
 
-      <p class="footer-note">
-        © 2025 · AML-compliance i praksis
-      </p>
+  <p class="footer-note">
+    © 2025 · AML-compliance i praksis
+  </p>
 
-    </div>
+</div>
+```
 
   </div>
 </footer>
 
 </body>
 </html>
-```
