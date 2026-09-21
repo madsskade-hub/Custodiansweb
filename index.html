@@ -134,6 +134,10 @@
       color: var(--ink);
     }
 
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
     /* HERO */
 
     #hero {
@@ -188,6 +192,32 @@
       background: #2D1F56;
     }
 
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 21px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      background: transparent;
+      color: var(--purple);
+      border: 1px solid var(--purple);
+      transition: .15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--surface);
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
     /* SECTIONS */
 
     section.content-section {
@@ -196,7 +226,7 @@
     }
 
     .section-header {
-      max-width: 560px;
+      max-width: 620px;
       margin-bottom: 48px;
     }
 
@@ -216,6 +246,12 @@
       gap: 16px;
     }
 
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+    }
+
     .card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -231,6 +267,150 @@
 
     .card p {
       font-size: 14px;
+    }
+
+    /* TAG PILLS (problem section) */
+
+    .tag-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .tag-pill {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--purple-mid);
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 7px 16px;
+      border-radius: 999px;
+    }
+
+    .callout {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      margin-top: 24px;
+    }
+
+    /* PROCESS */
+
+    .process-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-item:first-child {
+      padding-top: 0;
+    }
+
+    .process-item:last-child {
+      border-bottom: none;
+    }
+
+    .process-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--purple-mid);
+    }
+
+    .process-item h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+      color: var(--ink);
+    }
+
+    .process-item p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    /* PACKAGE TEASER */
+
+    .packages-teaser {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .teaser-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+    }
+
+    .teaser-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .teaser-card p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    /* RESPONSIBILITY */
+
+    .responsibility {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    .resp-col {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 32px;
+    }
+
+    .resp-col h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+
+    .resp-col ul {
+      list-style: none;
+    }
+
+    .resp-col li {
+      font-size: 14px;
+      color: var(--ink-light);
+      padding: 9px 0 9px 20px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .resp-col li:last-child {
+      border-bottom: none;
+    }
+
+    .resp-col li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--purple-mid);
     }
 
     /* CTA */
@@ -310,8 +490,22 @@
         font-size: 12px;
       }
 
-      .grid {
+      .grid,
+      .grid-3 {
         grid-template-columns: 1fr;
+      }
+
+      .packages-teaser {
+        grid-template-columns: 1fr;
+      }
+
+      .responsibility {
+        grid-template-columns: 1fr;
+      }
+
+      .process-item {
+        grid-template-columns: 40px 1fr;
+        gap: 16px;
       }
 
       #hero {
@@ -346,7 +540,8 @@
       </a>
 
 <ul class="nav-links">
-  <li><a href="index.html">Forside</a></li>
+  <li><a href="index.html" class="active">Forside</a></li>
+  <li><a href="ydelser.html">Ydelser</a></li>
   <li><a href="about.html">Om os</a></li>
   <li><a href="contact.html">Kontakt</a></li>
 </ul>
@@ -361,63 +556,23 @@
     <div class="hero-content">
 
       <h1>
-        Få styr på AML-compliance uden at bruge tid på det.
+        Få nogen til faktisk at lave jeres AML-arbejde.
       </h1>
 
       <p>
-        Custodians hjælper regulerede virksomheder med den daglige AML-drift,
-        dokumentation og opfølgning — så I får overblik,
-        reducerer risiko og er klar til tilsyn.
+        Custodians fungerer som jeres eksterne AML-funktion. Vi arbejder
+        direkte i jeres eksisterende systemer og håndterer den daglige
+        compliance-drift — så I får overblik, reducerer risiko og er klar
+        til tilsyn.
       </p>
 
-      <a href="contact.html" class="btn">
-        Kontakt os
-      </a>
-
-    </div>
-
-  </div>
-</section>
-
-<section class="content-section">
-  <div class="container">
-
-    <div class="section-header">
-      <span class="eyebrow">Hvad vi hjælper med</span>
-
-      <h2>
-        AML-compliance i praksis
-      </h2>
-    </div>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>AML-drift</h3>
-        <p>
-          Vi håndterer den løbende compliance-opgave i praksis.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Kundevurderinger</h3>
-        <p>
-          Vi hjælper med onboarding, risikovurderinger og dokumentation.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Politikker og procedurer</h3>
-        <p>
-          Vi sikrer at jeres setup er opdateret og anvendeligt.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Træning og kontrol</h3>
-        <p>
-          Vi hjælper medarbejdere og processer med at fungere i praksis.
-        </p>
+      <div class="btn-row">
+        <a href="contact.html" class="btn">
+          Book en samtale
+        </a>
+        <a href="ydelser.html" class="btn-outline">
+          Se ydelser og pakker
+        </a>
       </div>
 
     </div>
@@ -429,41 +584,236 @@
   <div class="container">
 
     <div class="section-header">
-      <span class="eyebrow">Hvad I får</span>
+      <span class="eyebrow">Problemet</span>
 
       <h2>
-        Mere ro. Mindre intern belastning.
+        Systemet gør ikke arbejdet for jer. Det gør vi.
       </h2>
+
+      <p>
+        Mange virksomheder har allerede AML-software. Men nogen skal
+        stadig indhente oplysninger, vurdere risikoen, følge op og
+        dokumentere beslutningerne.
+      </p>
+
+      <p class="callout">
+        Et flueben er ikke en begrundelse.
+      </p>
+
+      <div class="tag-list">
+        <span class="tag-pill">Indhentning</span>
+        <span class="tag-pill">Vurdering</span>
+        <span class="tag-pill">Dokumentation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Sådan arbejder vi</span>
+      <h2>En del af jeres drift. Ikke endnu et system.</h2>
+    </div>
+
+    <div class="process-list">
+
+      <div class="process-item">
+        <span class="process-num">01</span>
+        <div>
+          <h3>Vi lærer jeres forretning at kende</h3>
+          <p>Vi sætter os ind i jeres kunder, risici, systemer og eksisterende AML-processer.</p>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">02</span>
+        <div>
+          <h3>Vi bliver en del af driften</h3>
+          <p>Custodians arbejder direkte i jeres eksisterende systemer og håndterer de aftalte AML-opgaver.</p>
+        </div>
+      </div>
+
+      <div class="process-item">
+        <span class="process-num">03</span>
+        <div>
+          <h3>I får styr på compliance</h3>
+          <p>Sager bliver behandlet, dokumentationen vedligeholdt, efterslæb håndteret, og ledelsen får løbende overblik.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Det håndterer vi</span>
+      <h2>Den praktiske compliance-drift.</h2>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>KYC og kundekendskab</h3>
+        <p>Vi indsamler, verificerer og ajourfører kundedata korrekt og rettidigt.</p>
+      </div>
+
+      <div class="card">
+        <h3>Risikovurdering</h3>
+        <p>Vi vurderer kunder og dokumenterer begrundelsen for risikoklassifikationen.</p>
+      </div>
+
+      <div class="card">
+        <h3>Løbende overvågning</h3>
+        <p>Vi følger op på eksisterende kunder og ændringer i deres forhold.</p>
+      </div>
+
+      <div class="card">
+        <h3>Dokumentation og opfølgning</h3>
+        <p>Vi dokumenterer beslutninger og følger op på manglende oplysninger.</p>
+      </div>
+
+      <div class="card">
+        <h3>AML-efterslæb</h3>
+        <p>Vi rydder op i gamle sager og bringer compliancearbejdet ajour.</p>
+      </div>
+
+      <div class="card">
+        <h3>Politikker og governance</h3>
+        <p>Vi understøtter virksomhedens risikovurdering, procedurer og ledelsesrapportering.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section" id="ydelser">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Ydelser</span>
+
+      <h2>
+        Starter og Full-service.
+      </h2>
+
+      <p>
+        Vælg det niveau, der passer til jer — fra et vedligeholdt
+        AML-fundament til at Custodians driver arbejdet for jer.
+      </p>
+    </div>
+
+    <div class="packages-teaser">
+
+      <div class="teaser-card">
+        <h3>Starter</h3>
+        <p>
+          AML-fundament og hjælp til opstart. I ejer selv den daglige
+          kundehåndtering.
+        </p>
+      </div>
+
+      <div class="teaser-card">
+        <h3>Full-service</h3>
+        <p>
+          Vi driver det løbende AML- og KYC-arbejde i det system, I har
+          valgt.
+        </p>
+      </div>
+
+    </div>
+
+    <a href="ydelser.html" class="btn-outline">Se alle ydelser</a>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Hvorfor Custodians</span>
+      <h2>Compliance kræver mere end et system.</h2>
     </div>
 
     <div class="grid">
 
       <div class="card">
-        <h3>Mindre intern belastning</h3>
+        <h3>Mennesker — ikke endnu et system</h3>
         <p>
-          Compliance fylder mindre i hverdagen.
+          Vi udfører arbejdet og anvender faglig dømmekraft.
         </p>
       </div>
 
       <div class="card">
-        <h3>Bedre overblik</h3>
+        <h3>Stabil drift</h3>
         <p>
-          I ved hvor I står — og hvad der kræver opmærksomhed.
+          Compliance bliver en løbende driftsopgave frem for periodisk brandslukning.
         </p>
       </div>
 
       <div class="card">
-        <h3>Klar dokumentation</h3>
+        <h3>Dokumentation, der holder</h3>
         <p>
-          Alt er samlet og klar når det efterspørges.
+          Beslutninger og begrundelser bliver dokumenteret klart.
         </p>
       </div>
 
       <div class="card">
-        <h3>Adgang til ekspertise</h3>
+        <h3>Skalerbar kapacitet</h3>
         <p>
-          Få AML-kompetencer uden intern ansættelse.
+          Få den kapacitet, I har brug for, uden at opbygge en stor intern afdeling.
         </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Ansvar</span>
+      <h2>Outsource arbejdet. Ikke ansvaret.</h2>
+      <p>
+        I beholder det formelle ansvar efter hvidvasklovgivningen.
+        Custodians udfører de aftalte operationelle opgaver og
+        understøtter jeres processer, dokumentation og governance.
+      </p>
+    </div>
+
+    <div class="responsibility">
+
+      <div class="resp-col">
+        <h3>Jeres ansvar</h3>
+        <ul>
+          <li>Det formelle ansvar efter hvidvaskloven</li>
+          <li>Fastlæggelse af virksomhedens risikoappetit</li>
+          <li>Godkendelse af politikker og procedurer</li>
+          <li>Endelige beslutninger og vurderinger</li>
+          <li>Tilsyn og intern kontrol</li>
+        </ul>
+      </div>
+
+      <div class="resp-col">
+        <h3>Vores opgave</h3>
+        <ul>
+          <li>Drift af aftalte AML-opgaver</li>
+          <li>Indsamling og verificering af kundedata</li>
+          <li>Løbende overvågning og screening</li>
+          <li>Analyse og behandling af sager</li>
+          <li>Dokumentation og rapportering</li>
+          <li>Kvalitetssikring og procesforbedring</li>
+        </ul>
       </div>
 
     </div>
@@ -475,11 +825,12 @@
   <div class="container">
 
     <h2>
-      Har I brug for hjælp med AML-compliance?
+      Hvor meget tid bruger I egentlig på AML?
     </h2>
 
     <p>
-      Skriv til os og få et hurtigt overblik over jeres AML-setup.
+      Lad os tage en konkret samtale om jeres nuværende AML-arbejde — og
+      hvilke opgaver Custodians kan overtage.
     </p>
 
     <a class="mail-link" href="mailto:info@custodians.dk">
@@ -509,4 +860,3 @@
 
 </body>
 </html>
-```

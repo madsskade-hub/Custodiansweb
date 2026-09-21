@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
@@ -135,6 +134,10 @@
       color: var(--ink);
     }
 
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
     /* HERO */
 
     #hero {
@@ -166,7 +169,7 @@
     }
 
     .hero-content p {
-      max-width: 560px;
+      max-width: 620px;
     }
 
     /* CONTENT */
@@ -177,7 +180,7 @@
     }
 
     .section-header {
-      max-width: 560px;
+      max-width: 620px;
       margin-bottom: 48px;
     }
 
@@ -191,27 +194,69 @@
       margin-bottom: 16px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 16px;
+    .story p + p {
+      margin-top: 20px;
     }
 
-    .card {
+    .story {
+      max-width: 720px;
+    }
+
+    /* FOUNDERS */
+
+    .founders {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    .founder-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    .founder-body {
       padding: 28px;
     }
 
-    .card h3 {
-      font-size: 15px;
-      margin-bottom: 10px;
+    .founder-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: -.01em;
       color: var(--ink);
+      margin-bottom: 2px;
     }
 
-    .card p {
+    .founder-role {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 14px;
+    }
+
+    .founder-bio {
       font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .founder-tags {
+      font-size: 11px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
     }
 
     /* CTA */
@@ -291,7 +336,7 @@
         font-size: 12px;
       }
 
-      .grid {
+      .founders {
         grid-template-columns: 1fr;
       }
 
@@ -323,36 +368,39 @@
   <div class="container">
     <div class="nav-inner">
 
-  <a href="index.html" class="nav-logo">
-    Custodians<span class="dot">.</span>
-  </a>
+      <a href="index.html" class="nav-logo">
+        Custodians<span class="dot">.</span>
+      </a>
 
-  <ul class="nav-links">
-    <li><a href="index.html">Forside</a></li>
-    <li><a href="about.html">Om os</a></li>
-    <li><a href="contact.html">Kontakt</a></li>
-  </ul>
+      <ul class="nav-links">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="ydelser.html">Ydelser</a></li>
+        <li><a href="about.html" class="active">Om os</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+      </ul>
 
-</div>
-
+    </div>
   </div>
 </nav>
 
 <section id="hero">
   <div class="container">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-  <h1>
-    AML-compliance i praksis.
-  </h1>
+      <span class="eyebrow">Vores historie</span>
 
-  <p>
-    Custodians hjælper regulerede virksomheder med den løbende AML-drift,
-    dokumentation og opfølgning — så compliance bliver håndterbart i hverdagen.
-  </p>
+      <h1>
+        Et godt system er vigtigt. Men nogen skal stadig få arbejdet gjort.
+      </h1>
 
-</div>
+      <p>
+        Custodians blev skabt af en fælles erkendelse: Mange virksomheder
+        har allerede de rette systemer til KYC og AML. Alligevel bliver
+        compliancearbejdet ved med at vokse.
+      </p>
+
+    </div>
 
   </div>
 </section>
@@ -360,45 +408,83 @@
 <section class="content-section">
   <div class="container">
 
-<div class="section-header">
-  <span class="eyebrow">Hvem vi er</span>
+    <div class="story">
 
-  <h2>
-    Vi bygger compliance der fungerer i praksis.
-  </h2>
-</div>
+      <p>
+        Bag Custodians står Jacob Tinsfeldt og Mads Skade. Gennem deres
+        arbejde med ledelse, implementering, kundedrift og compliance har
+        de oplevet branchen fra forskellige sider — men set det samme
+        problem.
+      </p>
 
-<div class="grid">
+      <p>
+        Kundeoplysninger skal stadig indhentes. Risici skal vurderes.
+        Manglende dokumentation skal følges op. Beslutninger skal
+        begrundes, og eksisterende sager skal holdes ajour.
+      </p>
 
-  <div class="card">
-    <h3>Praktisk tilgang</h3>
-    <p>
-      Vi fokuserer på løsninger der fungerer i den daglige drift — ikke bare på papir.
-    </p>
+      <p>
+        Systemerne kan skabe struktur og understøtte processen. Men de kan
+        ikke alene udføre arbejdet, træffe de faglige vurderinger eller
+        sikre, at opgaverne bliver afsluttet korrekt og til tiden.
+      </p>
+
+      <p>
+        Det var i rummet mellem systemet og det færdige arbejde, at idéen
+        til Custodians opstod. Sammen skabte Jacob og Mads Custodians som
+        det operationelle lag, virksomhederne ofte mangler — et team, der
+        arbejder direkte i kundens eksisterende systemer og får den
+        daglige compliance til at fungere.
+      </p>
+
+    </div>
+
   </div>
+</section>
 
-  <div class="card">
-    <h3>Tæt på forretningen</h3>
-    <p>
-      Compliance skal understøtte virksomheden, ikke blokere den.
-    </p>
-  </div>
+<section class="content-section">
+  <div class="container">
 
-  <div class="card">
-    <h3>Løbende samarbejde</h3>
-    <p>
-      AML-compliance er ikke en engangsøvelse. Vi arbejder løbende med kunderne.
-    </p>
-  </div>
+    <div class="section-header">
+      <span class="eyebrow">Stifterne</span>
+      <h2>Erfaring fra begge sider af compliancearbejdet.</h2>
+    </div>
 
-  <div class="card">
-    <h3>Klar dokumentation</h3>
-    <p>
-      Vi hjælper virksomheder med at skabe overblik og dokumentation der holder.
-    </p>
-  </div>
+    <div class="founders">
 
-</div>
+      <div class="founder-card">
+        <img class="founder-photo" src="team-jacob.jpg" alt="Jacob Tinsfeldt, Founder &amp; Partner hos Custodians">
+        <div class="founder-body">
+          <h3 class="founder-name">Jacob Tinsfeldt</h3>
+          <span class="founder-role">Founder &amp; Partner</span>
+          <p class="founder-bio">
+            Jacob har mere end 15 års erfaring med ledelse, programstyring
+            og organisationsudvikling. Han har arbejdet indgående med
+            regulerede virksomheder, governance, dokumentation og
+            opbygning af organisationer, hvor kvalitet og sikker levering
+            er afgørende.
+          </p>
+          <span class="founder-tags">Ledelse · Governance · Struktur · Skalering</span>
+        </div>
+      </div>
+
+      <div class="founder-card">
+        <img class="founder-photo" src="team-mads.jpg" alt="Mads Skade, Founder &amp; Partner hos Custodians">
+        <div class="founder-body">
+          <h3 class="founder-name">Mads Skade</h3>
+          <span class="founder-role">Founder &amp; Partner</span>
+          <p class="founder-bio">
+            Mads har erfaring med implementering, kundeledelse og den
+            praktiske anvendelse af KYC- og AML-processer. Han har
+            arbejdet tæt med virksomheder fra onboarding til løbende
+            drift og ved, hvor compliancearbejdet typisk går i stå i
+            hverdagen.
+          </p>
+          <span class="founder-tags">Kundedrift · Implementering · KYC · AML</span>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </section>
@@ -406,17 +492,18 @@
 <section id="cta">
   <div class="container">
 
-<h2>
-  Har I brug for hjælp med AML-compliance?
-</h2>
+    <h2>
+      Skal vi blive en del af jeres compliance-drift?
+    </h2>
 
-<p>
-  Skriv til os og få et hurtigt overblik over jeres AML-setup.
-</p>
+    <p>
+      Lad os tage en konkret samtale om jeres nuværende arbejde, jeres
+      systemer og den kapacitet, I mangler.
+    </p>
 
-<a class="mail-link" href="mailto:info@custodians.dk">
-  info@custodians.dk
-</a>
+    <a class="mail-link" href="mailto:info@custodians.dk">
+      info@custodians.dk
+    </a>
 
   </div>
 </section>
@@ -424,17 +511,17 @@
 <footer>
   <div class="container">
 
-<div class="footer-inner">
+    <div class="footer-inner">
 
-  <span class="footer-logo">
-    Custodians.
-  </span>
+      <span class="footer-logo">
+        Custodians.
+      </span>
 
-  <p class="footer-note">
-    © 2025 · AML-compliance i praksis
-  </p>
+      <p class="footer-note">
+        © 2025 · AML-compliance i praksis
+      </p>
 
-</div>
+    </div>
 
   </div>
 </footer>

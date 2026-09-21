@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Ydelser — Custodians</title>
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #F8F7FC;
+      --surface: #EFECF7;
+      --white: #FFFFFF;
+
+      --ink: #1A1625;
+      --ink-light: #6B6080;
+      --ink-faint: #A89EC0;
+
+      --purple: #3D2B6E;
+      --purple-mid: #6B4ED4;
+
+      --border: rgba(61,43,110,0.09);
+
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+
+      --r-sm: 6px;
+      --r-lg: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: var(--ink-light);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* NAV */
+
+    #nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(248,247,252,0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo .dot {
+      color: var(--purple-mid);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--ink-light);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
+    /* HERO */
+
+    #hero {
+      padding: 120px 0 100px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(
+        ellipse,
+        rgba(107,78,212,0.07) 0%,
+        transparent 65%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content p {
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      background: var(--purple);
+      color: white;
+      border: 1px solid var(--purple);
+      transition: .15s;
+    }
+
+    .btn:hover {
+      background: #2D1F56;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 10px 21px;
+      border-radius: var(--r-sm);
+      text-decoration: none;
+      background: transparent;
+      color: var(--purple);
+      border: 1px solid var(--purple);
+      transition: .15s;
+    }
+
+    .btn-outline:hover {
+      background: var(--surface);
+    }
+
+    /* SECTIONS */
+
+    section.content-section {
+      padding: 96px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-header {
+      max-width: 620px;
+      margin-bottom: 48px;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 28px;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .card p {
+      font-size: 14px;
+    }
+
+    /* PACKAGES */
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    .package-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package-card.featured {
+      border-color: var(--purple-mid);
+    }
+
+    .package-tag {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--purple-mid);
+      margin-bottom: 14px;
+    }
+
+    .package-name {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 300;
+      letter-spacing: -.01em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .package-desc {
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .package-features {
+      list-style: none;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .package-features li {
+      font-size: 14px;
+      color: var(--ink-light);
+      padding: 9px 0 9px 22px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .package-features li:last-child {
+      border-bottom: none;
+    }
+
+    .package-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--purple-mid);
+      font-weight: 600;
+    }
+
+    .package-note {
+      font-size: 12px;
+      color: var(--ink-faint);
+      margin-bottom: 20px;
+    }
+
+    /* TABLE */
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      background: var(--white);
+    }
+
+    table.compare {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    table.compare th,
+    table.compare td {
+      padding: 16px 24px;
+      text-align: left;
+      font-size: 13.5px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    table.compare th {
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--surface);
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    table.compare td {
+      color: var(--ink-light);
+    }
+
+    table.compare th.center,
+    table.compare td.center {
+      text-align: center;
+    }
+
+    table.compare tr:last-child td {
+      border-bottom: none;
+    }
+
+    table.compare td.yes {
+      color: var(--purple-mid);
+      font-weight: 600;
+      text-align: center;
+    }
+
+    table.compare td.cond {
+      text-align: center;
+      font-size: 12.5px;
+    }
+
+    table.compare tbody tr.group-row td {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    /* CTA */
+
+    #cta {
+      padding: 120px 0;
+      background: var(--purple);
+    }
+
+    #cta h2 {
+      color: rgba(255,255,255,.95);
+      max-width: 620px;
+    }
+
+    #cta p {
+      color: rgba(255,255,255,.58);
+      max-width: 520px;
+      margin-top: 16px;
+      margin-bottom: 40px;
+    }
+
+    .mail-link {
+      display: inline-block;
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: white;
+      text-decoration: none;
+    }
+
+    .mail-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #100C1C;
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 15px;
+      color: rgba(255,255,255,.28);
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: rgba(255,255,255,.14);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 860px) {
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      #hero {
+        padding: 80px 0 72px;
+      }
+
+      section.content-section {
+        padding: 72px 0;
+      }
+
+      #cta {
+        padding: 80px 0;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="index.html" class="nav-logo">
+        Custodians<span class="dot">.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="ydelser.html" class="active">Ydelser</a></li>
+        <li><a href="about.html">Om os</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="container">
+
+    <div class="hero-content">
+
+      <span class="eyebrow">Ydelser</span>
+
+      <h1>
+        To måder at få styr på AML-driften.
+      </h1>
+
+      <p>
+        Uanset om I selv ejer den daglige kundehåndtering, eller ønsker at
+        Custodians driver arbejdet for jer, arbejder vi altid i det system,
+        I allerede har — eller hjælper jer med at komme i gang uden ét.
+      </p>
+
+      <a href="contact.html" class="btn">
+        Book en samtale
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Sådan arbejder vi</span>
+      <h2>Én ekstern funktion. Ikke endnu et system.</h2>
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Vi arbejder i jeres system</h3>
+        <p>
+          I behøver ikke skifte KYC- eller AML-system. Vi går ind i den
+          løsning, I allerede bruger.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Vi udfører arbejdet</h3>
+        <p>
+          Kundekendskab, risikovurdering, opfølgning og dokumentation —
+          vi løser de aftalte opgaver.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>I beholder overblikket</h3>
+        <p>
+          I får løbende status på sager, efterslæb og dokumentation — uden
+          selv at skulle udføre driften.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section" id="pakker">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Vælg jeres niveau</span>
+      <h2>Starter og Full-service.</h2>
+      <p>
+        Starter giver jer et vedligeholdt AML-fundament. Med Full-service
+        driver Custodians det løbende AML- og KYC-arbejde i det system, I
+        har valgt.
+      </p>
+    </div>
+
+    <div class="packages">
+
+      <div class="package-card">
+        <span class="package-tag">1 til 30 kunder</span>
+        <h3 class="package-name">Starter</h3>
+        <p class="package-desc">
+          AML-fundament og hjælp til opstart. I ejer selv den daglige
+          kundehåndtering. Har I et KYC-system, kan Custodians udføre den
+          indledende KYC i systemet.
+        </p>
+        <ul class="package-features">
+          <li>Virksomhedens risikovurdering</li>
+          <li>Politikker, forretningsgange og kontroller</li>
+          <li>Vedligeholdelse og opdatering ved ændringer</li>
+          <li>Årlig AML-undervisning</li>
+          <li>Uafhængig kontrol med dokumenteret opfølgning</li>
+        </ul>
+        <a href="contact.html" class="btn-outline">Book en samtale</a>
+      </div>
+
+      <div class="package-card featured">
+        <span class="package-tag">KYC-system påkrævet</span>
+        <h3 class="package-name">Full-service</h3>
+        <p class="package-desc">
+          Vi driver det løbende AML- og KYC-arbejde. I vælger systemet og
+          giver os adgang — vi arbejder i den valgte løsning og
+          samarbejder med alle de kendte leverandører på markedet.
+        </p>
+        <ul class="package-features">
+          <li>Alt fra Starter</li>
+          <li>Identifikation og kontrol af kunde og reelle ejere</li>
+          <li>PEP-, sanktions- og adverse media-kontrol</li>
+          <li>Skærpede kundekendskabsprocedurer ved øget risiko</li>
+          <li>Løbende overvågning og KYC-opdateringer</li>
+        </ul>
+        <p class="package-note">
+          Omfanget aftales ud fra antal kunder og opgavens karakter.
+        </p>
+        <a href="contact.html" class="btn">Book en samtale</a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Hvad får I med</span>
+      <h2>Sammenlign de to niveauer.</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Ydelse</th>
+            <th class="center">Starter</th>
+            <th class="center">Full-service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-row">
+            <td colspan="3">AML-fundament</td>
+          </tr>
+          <tr>
+            <td>Virksomhedens risikovurdering</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Politikker, forretningsgange og kontroller</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Vedligeholdelse og opdateringer ved ændringer</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Årlig AML-undervisning og opdatering ved væsentlige ændringer</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Uafhængig kontrol med dokumenteret opfølgning</td>
+            <td class="yes">✓</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr class="group-row">
+            <td colspan="3">Kundekendskab og løbende drift</td>
+          </tr>
+          <tr>
+            <td>Identifikation og kontrol af kunde og reelle ejere</td>
+            <td class="cond">Betinget</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Formål, kundens forretningsprofil og individuel risikovurdering</td>
+            <td class="cond">Betinget</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>PEP-, sanktions- og adverse media-kontrol</td>
+            <td class="cond">Kunden</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Skærpede kundekendskabsprocedurer ved øget risiko</td>
+            <td class="cond">Kunden</td>
+            <td class="yes">✓</td>
+          </tr>
+          <tr>
+            <td>Løbende overvågning og KYC-opdateringer</td>
+            <td class="cond">Kunden</td>
+            <td class="yes">✓</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="eyebrow">Ansvarsfordeling</span>
+      <h2>Sådan fordeles arbejdet.</h2>
+      <p>
+        KYC-systemet understøtter arbejdsgangen og dokumentationen. Det
+        ændrer ikke, at I fortsat er ansvarlige for, at hvidvaskloven
+        bliver overholdt.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>Aktivitet</th>
+            <th class="center">Starter</th>
+            <th class="center">Full-service</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Indledende KYC</td>
+            <td class="cond">I/Custodians i jeres system</td>
+            <td class="cond">Custodians i jeres system</td>
+          </tr>
+          <tr>
+            <td>Løbende overvågning og KYC-opdateringer</td>
+            <td class="cond">Jer</td>
+            <td class="cond"><strong>Custodians</strong></td>
+          </tr>
+          <tr>
+            <td>PEP, sanktioner og adverse media</td>
+            <td class="cond">Jer</td>
+            <td class="cond"><strong>Custodians</strong></td>
+          </tr>
+          <tr>
+            <td>Usædvanlige forhold</td>
+            <td class="cond">I undersøger og noterer</td>
+            <td class="cond">Custodians undersøger, dokumenterer og eskalerer</td>
+          </tr>
+          <tr>
+            <td>Underretning til Hvidvasksekretariatet</td>
+            <td class="cond">Jer, med support</td>
+            <td class="cond">Jer, med støtte fra Custodians</td>
+          </tr>
+          <tr>
+            <td>Intern opfølgning</td>
+            <td class="cond">Jer</td>
+            <td class="cond">Jer, med rapportering fra Custodians</td>
+          </tr>
+          <tr>
+            <td>Juridisk ansvar</td>
+            <td class="cond">Jer</td>
+            <td class="cond">Jer</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section id="cta">
+  <div class="container">
+
+    <h2>
+      Ikke sikre på, hvilket niveau der passer?
+    </h2>
+
+    <p>
+      Fortæl os kort om jeres nuværende AML-arbejde. Så hjælper vi jer med
+      at finde det rette niveau.
+    </p>
+
+    <a class="mail-link" href="mailto:info@custodians.dk">
+      info@custodians.dk
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+
+    <div class="footer-inner">
+
+      <span class="footer-logo">
+        Custodians.
+      </span>
+
+      <p class="footer-note">
+        © 2025 · AML-compliance i praksis
+      </p>
+
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>
